@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <!-- Rich Golden Saffron Gradients -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE259" />
+      <stop offset="50%" stop-color="#FFA751" />
+      <stop offset="100%" stop-color="#E67E22" />
+    </linearGradient>
+
+    <linearGradient id="maroonGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#800000" />
+      <stop offset="100%" stop-color="#4A0000" />
+    </linearGradient>
+
+    <linearGradient id="flameGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#FF512F" />
+      <stop offset="50%" stop-color="#F09819" />
+      <stop offset="100%" stop-color="#FFEA82" />
+    </linearGradient>
+
+    <filter id="goldGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="8" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Circular Temple Seal Outer Ring -->
+  <circle cx="256" cy="256" r="240" fill="url(#maroonGrad)" stroke="url(#goldGrad)" stroke-width="12" />
+  <circle cx="256" cy="256" r="222" fill="none" stroke="#FFD700" stroke-width="2" stroke-dasharray="6,4" opacity="0.7" />
+
+  <!-- Sacred Decorative Lotus Base -->
+  <g id="lotusBase">
+    <!-- Center Lotus Petal -->
+    <path d="M 256 320 C 230 380 200 410 256 430 C 312 410 282 380 256 320 Z" fill="url(#goldGrad)" />
+    <!-- Left Petals -->
+    <path d="M 240 330 C 180 360 130 370 170 415 C 220 410 235 370 240 330 Z" fill="url(#goldGrad)" opacity="0.9" />
+    <path d="M 220 345 C 140 350 90 330 110 380 C 160 395 200 370 220 345 Z" fill="url(#goldGrad)" opacity="0.75" />
+    <!-- Right Petals -->
+    <path d="M 272 330 C 332 360 382 370 342 415 C 292 410 277 370 272 330 Z" fill="url(#goldGrad)" opacity="0.9" />
+    <path d="M 292 345 C 372 350 422 330 402 380 C 352 395 312 370 292 345 Z" fill="url(#goldGrad)" opacity="0.75" />
+  </g>
+
+  <!-- Divine Temple Tower / Gopuram Architecture -->
+  <g id="templeGopuram" fill="url(#goldGrad)">
+    <!-- Main Base Arch Entrance (Accommodations / Portal Door) -->
+    <path d="M 216 340 L 216 270 C 216 240 296 240 296 270 L 296 340 Z" fill="url(#flameGrad)" />
+    <path d="M 228 340 L 228 278 C 228 255 284 255 284 278 L 284 340 Z" fill="#4A0000" />
+
+    <!-- Tier 1 Structure -->
+    <path d="M 160 270 L 352 270 L 336 220 L 176 220 Z" />
+    <!-- Tier 1 Pillars / Details -->
+    <rect x="184" y="230" width="12" height="30" fill="#4A0000" rx="2" />
+    <rect x="212" y="230" width="12" height="30" fill="#4A0000" rx="2" />
+    <rect x="288" y="230" width="12" height="30" fill="#4A0000" rx="2" />
+    <rect x="316" y="230" width="12" height="30" fill="#4A0000" rx="2" />
+
+    <!-- Tier 2 Structure -->
+    <path d="M 180 216 L 332 216 L 316 170 L 196 170 Z" />
+    <!-- Tier 2 Details -->
+    <rect x="210" y="178" width="10" height="28" fill="#4A0000" rx="2" />
+    <rect x="251" y="178" width="10" height="28" fill="#4A0000" rx="2" />
+    <rect x="292" y="178" width="10" height="28" fill="#4A0000" rx="2" />
+
+    <!-- Tier 3 Dome / Roof Structure -->
+    <path d="M 198 166 L 314 166 L 298 126 L 214 126 Z" />
+    <!-- Arch Crest -->
+    <path d="M 210 122 C 210 95 302 95 302 122 Z" fill="url(#goldGrad)" />
+
+    <!-- Golden Kalasa Pinnacles (Sacred Spire) -->
+    <path d="M 256 60 L 264 92 L 248 92 Z" fill="url(#flameGrad)" />
+    <circle cx="256" cy="56" r="8" fill="#FFEA82" />
+    <path d="M 230 78 L 236 100 L 224 100 Z" fill="url(#goldGrad)" />
+    <path d="M 282 78 L 288 100 L 276 100 Z" fill="url(#goldGrad)" />
+  </g>
+
+  <!-- Sacred Flame / Deepa Light at Center of Portal -->
+  <path d="M 256 280 C 246 300 242 312 256 325 C 270 312 266 300 256 280 Z" fill="url(#flameGrad)" filter="url(#goldGlow)" />
+  <circle cx="256" cy="310" r="5" fill="#FFFFFF" />
+</svg>

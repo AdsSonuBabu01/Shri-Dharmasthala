@@ -1,0 +1,6 @@
+{
+  "name": "Shri Kshetra Dharmasthala Online Room Booking",
+  "description": "Online room booking portal and yatri nivas guide for Shri Kshetra Dharmasthala temple accommodation, room types, facilities, and travel guide.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

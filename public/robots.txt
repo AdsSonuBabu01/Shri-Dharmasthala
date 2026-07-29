@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://shridharamasthala.org/sitemap.xml

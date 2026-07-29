@@ -1,0 +1,153 @@
+{
+  "entities": {
+    "bookingInquiry": {
+      "title": "Booking Inquiry",
+      "description": "Room reservation inquiry submitted by a pilgrim",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string",
+          "description": "UID of the user who created the inquiry"
+        },
+        "guestName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100,
+          "description": "Full name of the guest"
+        },
+        "phone": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 15,
+          "description": "Contact phone number"
+        },
+        "email": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 100,
+          "description": "Contact email address"
+        },
+        "checkInDate": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 10,
+          "description": "Check-in date (YYYY-MM-DD)"
+        },
+        "checkOutDate": {
+          "type": "string",
+          "minLength": 10,
+          "maxLength": 10,
+          "description": "Check-out date (YYYY-MM-DD)"
+        },
+        "roomType": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50,
+          "description": "Preferred room type or Bhakta Niwas block"
+        },
+        "guestCount": {
+          "type": "number",
+          "description": "Total number of guests"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["pending", "confirmed", "cancelled"],
+          "description": "Inquiry processing status"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Creation timestamp"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Last update timestamp"
+        }
+      },
+      "required": ["userId", "guestName", "phone", "checkInDate", "checkOutDate", "roomType", "guestCount", "status", "createdAt"]
+    },
+    "userProfile": {
+      "title": "User Profile",
+      "description": "Public profile details for a registered pilgrim",
+      "type": "object",
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "email": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 100
+        },
+        "phone": {
+          "type": "string",
+          "maxLength": 15
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updatedAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["displayName", "email", "createdAt"]
+    },
+    "review": {
+      "title": "Pilgrim Review",
+      "description": "Feedback and room reviews shared by pilgrims",
+      "type": "object",
+      "properties": {
+        "userId": {
+          "type": "string"
+        },
+        "authorName": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 100
+        },
+        "rating": {
+          "type": "number"
+        },
+        "comment": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 500
+        },
+        "roomType": {
+          "type": "string",
+          "maxLength": 50
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["userId", "authorName", "rating", "comment", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/bookingInquiries/{inquiryId}": {
+      "schema": {
+        "$ref": "#/entities/bookingInquiry"
+      },
+      "description": "Collection of room reservation inquiries"
+    },
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/userProfile"
+      },
+      "description": "Collection of registered pilgrim user profiles"
+    },
+    "/reviews/{reviewId}": {
+      "schema": {
+        "$ref": "#/entities/review"
+      },
+      "description": "Collection of pilgrim room reviews and feedback"
+    }
+  }
+}
