@@ -1,20 +1,36 @@
 import React from 'react';
 import { Zap, Calendar, Phone } from 'lucide-react';
 import { GLOBAL_CONFIG } from '../config/global';
+import { useQuickBooking } from '../context/BookingModalContext';
 
 export const FloatingButtons: React.FC = () => {
+  const instantWhatsappMessage = `🙏 Namaskara
+
+I would like to book a room at Shri Kshetra Dharmasthala.
+
+Booking Details:
+• Check-in Date: 
+• Check-out Date: 
+• Number of Guests: 
+• AC / Non-AC: 
+• Contact Number: 
+
+Please let me know room availability and booking process.`;
+
+  const instantWhatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent(instantWhatsappMessage)}`;
+
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col items-end gap-2.5 no-print">
       
       {/* 1. ⚡ Instant Booking */}
       <a
-        href={GLOBAL_CONFIG.instantBookingLink}
+        href={instantWhatsappUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-2 py-2.5 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-xl transition-all duration-200 transform hover:scale-105 border border-emerald-400/50"
+        className="group flex items-center gap-2 py-2.5 px-4 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-black text-xs shadow-xl transition-all duration-200 transform hover:scale-105 border border-emerald-400/50 cursor-pointer no-underline"
         title="⚡ Instant Booking (Atkal / Same Day)"
       >
-        <span className="hidden sm:inline text-xs">⚡ Instant Booking</span>
+        <span className="hidden sm:inline text-xs">⚡ Instant WhatsApp Booking</span>
         <span className="sm:hidden text-xs">⚡ Instant</span>
         <Zap className="w-4 h-4 text-amber-300 fill-amber-300" />
       </a>

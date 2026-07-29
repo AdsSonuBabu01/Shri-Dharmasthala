@@ -3,11 +3,14 @@ import {createRoot} from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
 import { AuthProvider } from './context/AuthContext';
+import { BookingModalProvider } from './context/BookingModalContext';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <AuthProvider>
-      <App />
+      <BookingModalProvider>
+        <App />
+      </BookingModalProvider>
     </AuthProvider>
   </StrictMode>,
 );

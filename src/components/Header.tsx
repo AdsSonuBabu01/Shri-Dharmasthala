@@ -18,6 +18,7 @@ import {
 import { GLOBAL_CONFIG } from '../config/global';
 import { NavigationPage } from '../types';
 import { navigateTo } from '../utils/router';
+import { useQuickBooking } from '../context/BookingModalContext';
 
 interface HeaderProps {
   currentPage: NavigationPage;
@@ -25,6 +26,21 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const instantWhatsappMessage = `🙏 Namaskara
+
+I would like to book a room at Shri Kshetra Dharmasthala.
+
+Booking Details:
+• Check-in Date: 
+• Check-out Date: 
+• Number of Guests: 
+• AC / Non-AC: 
+• Contact Number: 
+
+Please let me know room availability and booking process.`;
+
+  const instantWhatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent(instantWhatsappMessage)}`;
 
   const navItems: { label: string; page: NavigationPage; path: string; icon: React.FC<{ className?: string }> }[] = [
     { label: 'Home', page: 'home', path: '/', icon: Home },
@@ -45,19 +61,22 @@ export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
 
   return (
     <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-200/60 shadow-sm transition-all duration-200">
-      {/* Top Notification Strip */}
-      <div className="bg-temple-maroon text-amber-100 text-xs py-1.5 px-4">
+      {/* Top Notification Strip - Government & Official Style Trust Bar */}
+      <div className="bg-[#7A0C16] text-amber-100 text-xs py-2 px-4 border-b border-amber-500/30">
         <div className="max-w-7xl mx-auto flex flex-wrap justify-between items-center gap-2">
           <div className="flex items-center gap-2">
-            <span className="inline-block w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
-            <span className="font-medium">Direct Yatri Room Reservation Helpline:</span>
-            <a href={GLOBAL_CONFIG.phoneTel} className="font-bold underline hover:text-white transition">
-              {GLOBAL_CONFIG.phoneDisplay}
-            </a>
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-amber-400/20 text-amber-300 font-extrabold text-[11px] border border-amber-400/40 uppercase tracking-wide">
+              <span>🛡️</span> OFFICIAL BOOKING OPTIONS
+            </span>
           </div>
-          <div className="hidden sm:flex items-center gap-4 text-[11px] text-amber-200/90">
-            <span>🛕 Temple Timings: 6:30 AM - 8:30 PM</span>
-            <span>🍲 Annadana Free Meals Available</span>
+          <div className="flex items-center gap-2 text-xs font-semibold">
+            <span className="text-amber-200/90">📞 Direct Booking Assistance:</span>
+            <a 
+              href={GLOBAL_CONFIG.phoneTel} 
+              className="font-extrabold text-amber-300 hover:text-white underline transition flex items-center gap-1"
+            >
+              <span>{GLOBAL_CONFIG.phoneDisplay}</span>
+            </a>
           </div>
         </div>
       </div>
@@ -121,14 +140,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
           <div className="hidden lg:flex items-center gap-2">
             {/* Instant Booking */}
             <a
-              href={GLOBAL_CONFIG.instantBookingLink}
+              href={instantWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all duration-150 transform hover:-translate-y-0.5"
-              title="⚡ Instant Booking (Atkal / Same Day)"
+              className="flex items-center gap-1.5 px-3 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs hover:shadow-md transition-all duration-150 transform hover:-translate-y-0.5 cursor-pointer no-underline"
+              title="⚡ Instant WhatsApp Booking"
             >
               <Zap className="w-3.5 h-3.5 text-amber-300 fill-amber-300" />
-              <span>⚡ Instant Booking</span>
+              <span>⚡ Instant WhatsApp Booking</span>
             </a>
 
             {/* One Day Advance Booking */}
@@ -147,12 +166,12 @@ export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
           {/* Mobile Menu Toggle Button */}
           <div className="flex lg:hidden items-center gap-2">
             <a
-              href={GLOBAL_CONFIG.instantBookingLink}
+              href={instantWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-2 rounded-lg bg-emerald-600 text-white shadow-xs lg:hidden"
-              aria-label="Instant Booking"
-              title="⚡ Instant Booking"
+              className="p-2 rounded-lg bg-emerald-600 text-white shadow-xs lg:hidden cursor-pointer"
+              aria-label="Instant WhatsApp Booking"
+              title="⚡ Instant WhatsApp Booking"
             >
               <Zap className="w-5 h-5 text-amber-300 fill-amber-300" />
             </a>
@@ -199,13 +218,14 @@ export const Header: React.FC<HeaderProps> = ({ currentPage }) => {
 
           <div className="pt-3 border-t border-gray-100 space-y-2.5">
             <a
-              href={GLOBAL_CONFIG.instantBookingLink}
+              href={instantWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-emerald-600 text-white font-bold text-sm shadow-sm"
+              onClick={() => setMobileMenuOpen(false)}
+              className="w-full flex items-center justify-center gap-2 py-3 rounded-lg bg-emerald-600 text-white font-bold text-sm shadow-sm cursor-pointer no-underline"
             >
               <Zap className="w-5 h-5 text-amber-300 fill-amber-300" />
-              <span>⚡ Instant Booking (Atkal / Same Day)</span>
+              <span>⚡ Instant WhatsApp Booking</span>
             </a>
 
             <a

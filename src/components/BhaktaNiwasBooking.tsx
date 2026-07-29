@@ -1,6 +1,7 @@
 import React from 'react';
 import { MessageSquare, Calendar, Zap, CheckCircle2, ExternalLink, ShieldCheck, Clock } from 'lucide-react';
 import { GLOBAL_CONFIG } from '../config/global';
+import { useQuickBooking } from '../context/BookingModalContext';
 
 interface BhaktaNiwasBookingProps {
   title?: string;
@@ -13,7 +14,20 @@ export const BhaktaNiwasBooking: React.FC<BhaktaNiwasBookingProps> = ({
   subtitle = "Choose your preferred room reservation method below for Shri Kshetra Dharmasthala Yatri stay.",
   className = ""
 }) => {
-  const whatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent("Hello, I would like to book a Bhakta Niwas room for today. Please share availability and booking details.")}`;
+  const instantWhatsappMessage = `🙏 Namaskara
+
+I would like to book a room at Shri Kshetra Dharmasthala.
+
+Booking Details:
+• Check-in Date: 
+• Check-out Date: 
+• Number of Guests: 
+• AC / Non-AC: 
+• Contact Number: 
+
+Please let me know room availability and booking process.`;
+
+  const instantWhatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent(instantWhatsappMessage)}`;
   const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSc_W7Aky0QOl9LCL08sFdKBV3XJKf-hQ6YXwWjkJw7I-3BIRA/viewform";
 
   return (
@@ -83,10 +97,10 @@ export const BhaktaNiwasBooking: React.FC<BhaktaNiwasBookingProps> = ({
 
           <div className="pt-6 mt-6 border-t border-emerald-200">
             <a
-              href={whatsappUrl}
+              href={instantWhatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg hover:shadow-emerald-600/30 transition-all duration-200 group-hover:scale-[1.02]"
+              className="w-full py-4 px-6 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-extrabold text-sm sm:text-base flex items-center justify-center gap-2.5 shadow-lg hover:shadow-emerald-600/30 transition-all duration-200 group-hover:scale-[1.02] cursor-pointer no-underline"
             >
               <MessageSquare className="w-5 h-5 text-amber-300 fill-amber-300 shrink-0" />
               <span>Instant WhatsApp Booking</span>

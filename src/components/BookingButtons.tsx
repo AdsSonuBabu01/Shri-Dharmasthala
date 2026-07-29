@@ -1,6 +1,7 @@
 import React from 'react';
 import { Zap, Calendar } from 'lucide-react';
 import { GLOBAL_CONFIG } from '../config/global';
+import { useQuickBooking } from '../context/BookingModalContext';
 
 interface BookingButtonsProps {
   layout?: 'row' | 'col' | 'auto';
@@ -19,12 +20,7 @@ export const BookingButtons: React.FC<BookingButtonsProps> = ({
   className = '',
   fullWidth = false,
 }) => {
-  const instantLink = roomName
-    ? `https://wa.me/919903490617?text=${encodeURIComponent(
-        `Hello, I want Instant Same Day Room Booking.\n\nName:\nMobile:\nCheck-in Date:\nNumber of Guests:\nRoom Type: ${roomName}\nSpecial Request:\n\nPlease confirm room availability.`
-      )}`
-    : GLOBAL_CONFIG.instantBookingLink;
-
+  const { openQuickBookingModal } = useQuickBooking();
   const advanceLink = GLOBAL_CONFIG.advanceBookingLink;
 
   const layoutClasses = 
@@ -37,12 +33,11 @@ export const BookingButtons: React.FC<BookingButtonsProps> = ({
 
   return (
     <div className={`${layoutClasses} ${className}`}>
-      {/* 1. Instant Booking (WhatsApp) */}
-      <a
-        href={instantLink}
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`group flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 ${
+      {/* 1. Instant Booking (Opens Quick Booking Form Modal) */}
+      <button
+        type="button"
+        onClick={() => openQuickBookingModal(roomName)}
+        className={`group flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold transition-all shadow-md hover:shadow-lg transform hover:-translate-y-0.5 cursor-pointer ${
           isSm ? 'px-3 py-2 text-xs' : isLg ? 'px-6 py-4 text-base' : 'px-4 py-3 text-sm'
         } ${fullWidth || layout === 'col' ? 'w-full' : 'flex-1 sm:flex-initial'}`}
       >
@@ -57,7 +52,7 @@ export const BookingButtons: React.FC<BookingButtonsProps> = ({
             </div>
           )}
         </div>
-      </a>
+      </button>
 
       {/* 2. One Day Advance Booking */}
       <a

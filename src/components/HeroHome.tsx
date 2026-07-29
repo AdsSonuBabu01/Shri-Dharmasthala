@@ -1,412 +1,285 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { 
-  Building2, 
-  User, 
-  Phone, 
-  Mail, 
+  Zap, 
   Calendar, 
-  Users, 
-  Wind, 
-  Bed, 
-  Home as HomeIcon, 
-  MessageSquare, 
-  MessageCircle, 
-  FileText, 
   CheckCircle2, 
-  Sparkles, 
-  ShieldCheck 
+  ExternalLink, 
+  ShieldCheck, 
+  Clock, 
+  Flame, 
+  Car, 
+  Users, 
+  PhoneCall, 
+  BedDouble, 
+  Sparkles,
+  MapPin
 } from 'lucide-react';
 import { GLOBAL_CONFIG } from '../config/global';
-import { QuickBookingFormData } from '../types';
 
-interface HeroHomeProps {
-  onFormSubmit?: (data: QuickBookingFormData) => void;
-}
+export const HeroHome: React.FC = () => {
+  const instantWhatsappMessage = `🙏 Namaskara
 
-export const HeroHome: React.FC<HeroHomeProps> = ({ onFormSubmit }) => {
-  const today = new Date().toISOString().split('T')[0];
-  const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+I would like to book a room at Shri Kshetra Dharmasthala.
 
-  const [formData, setFormData] = useState<QuickBookingFormData>({
-    fullName: '',
-    mobileNumber: '',
-    email: '',
-    checkInDate: today,
-    checkOutDate: tomorrow,
-    guestsCount: '2 Guests',
-    acPreference: 'AC Room',
-    roomType: 'Double Bed Room',
-    roomsCount: '1 Room',
-    specialRequest: ''
-  });
+Booking Details:
+• Check-in Date: 
+• Check-out Date: 
+• Number of Guests: 
+• AC / Non-AC: 
+• Contact Number: 
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!formData.fullName || !formData.mobileNumber) {
-      alert('Please enter your Full Name and Mobile Number.');
-      return;
+Please let me know room availability and booking process.`;
+
+  const instantWhatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent(instantWhatsappMessage)}`;
+  const advanceFormUrl = GLOBAL_CONFIG.advanceBookingLink;
+
+  const trustFeatures = [
+    {
+      icon: '🏛',
+      title: '3-Min Walk to Temple',
+      description: 'Yatri Nivas & room blocks situated right in the complex near darshan queues.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
+    },
+    {
+      icon: '♨',
+      title: '24×7 Hot Water',
+      description: 'Continuous solar & geyser hot water in all washrooms for early morning holy bath.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
+    },
+    {
+      icon: '👨‍👩‍👧',
+      title: 'Family Rooms',
+      description: 'Spacious 2-bed, 4-bed, and large group suites tailored for family pilgrimages.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
+    },
+    {
+      icon: '🚗',
+      title: 'Parking Available',
+      description: 'Dedicated spacious parking lots for cars, tempo travelers, and pilgrim buses.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
+    },
+    {
+      icon: '🛏',
+      title: 'Clean & Hygienic Rooms',
+      description: 'Sanitized rooms with fresh linens, elevator access, and peaceful ambiance.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
+    },
+    {
+      icon: '📞',
+      title: 'Dedicated Booking Assistance',
+      description: '24×7 pilgrim helpline to verify room availability and guide check-in.',
+      bgColor: 'bg-amber-500/10',
+      borderColor: 'border-amber-400/30'
     }
-
-    const message = `Hello, I want Instant Same Day Room Booking.
-
-Name: ${formData.fullName}
-Mobile: ${formData.mobileNumber}
-Check-in Date: ${formData.checkInDate || ''}
-Number of Guests: ${formData.guestsCount || ''}
-Room Type: ${formData.roomType || ''}
-Special Request: ${formData.specialRequest || ''}
-
-Please confirm room availability.`;
-
-    const whatsappUrl = `https://wa.me/919903490617?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
-
-    if (onFormSubmit) {
-      onFormSubmit(formData);
-    }
-  };
+  ];
 
   return (
-    <section className="relative min-h-[90vh] bg-gray-900 text-white overflow-hidden py-12 lg:py-16">
-      {/* Background Image with Dark & Maroon Gradient Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=75"
-          alt="Shri Kshetra Dharmasthala Temple Gopuram"
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover object-center opacity-35 scale-105 transform transition-transform duration-700"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/95 via-gray-900/90 to-maroon-950/85"></div>
-        <div className="absolute inset-0 temple-pattern-overlay"></div>
-      </div>
+    <div className="bg-[#FDFBF7] text-gray-900">
+      
+      {/* ==========================================
+          HERO SECTION
+      ========================================== */}
+      <section className="relative bg-gradient-to-b from-[#7A0C16] via-[#5C0911] to-[#40060B] text-white py-12 lg:py-16 overflow-hidden border-b-4 border-[#D4A017]">
+        {/* Background Overlay & Temple Motif */}
+        <div className="absolute inset-0 opacity-15 pointer-events-none">
+          <img
+            src="https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=75"
+            alt="Temple Gopuram"
+            loading="eager"
+            className="w-full h-full object-cover object-center filter grayscale"
+          />
+        </div>
+        <div className="absolute inset-0 temple-pattern-overlay pointer-events-none"></div>
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10 text-center">
           
-          {/* Left Column: Heading & Key Values */}
-          <div className="lg:col-span-6 space-y-6 text-left">
-            
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-500/20 border border-amber-400/40 text-amber-300 text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
-              <Sparkles className="w-3.5 h-3.5 text-amber-400" />
-              <span>Official Yatri Room Booking Assistance</span>
-            </div>
-
-            <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
-                🛕 <span className="text-amber-300">SHRI KSHETRA DHARMASTHALA</span>
-                <span className="block text-2xl sm:text-3xl lg:text-4xl text-amber-100 font-extrabold mt-1">
-                  ONLINE ROOM BOOKING
-                </span>
-              </h1>
-              <p className="text-base sm:text-lg text-amber-100/90 font-medium leading-relaxed max-w-2xl">
-                Reserve AC & Non-AC rooms, family suites, and Yatri Nivas lodging near Lord Manjunatha Swamy Temple. Fast, transparent assistance via WhatsApp and online portal.
-              </p>
-            </div>
-
-            {/* Quick Highlights */}
-            <div className="grid grid-cols-2 gap-3 pt-2">
-              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
-                <ShieldCheck className="w-5 h-5 text-amber-400 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-gray-100">Clean & Safe Yatri Stay</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
-                <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-gray-100">24x7 Hot Water & Lift</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
-                <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-gray-100">Close to Temple & Dining</span>
-              </div>
-              <div className="flex items-center gap-2.5 p-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/10">
-                <CheckCircle2 className="w-5 h-5 text-amber-400 shrink-0" />
-                <span className="text-xs sm:text-sm font-semibold text-gray-100">Spacious Bus/Car Parking</span>
-              </div>
-            </div>
-
-            {/* Direct WhatsApp Callout Banner */}
-            <div className="p-4 rounded-2xl bg-emerald-950/80 border border-emerald-500/40 backdrop-blur-md flex flex-wrap items-center justify-between gap-4">
-              <div>
-                <div className="text-xs font-bold uppercase tracking-wider text-emerald-300">
-                  Instant Same Day Helpline
-                </div>
-                <div className="text-lg font-extrabold text-white">
-                  +91 99034 90617
-                </div>
-              </div>
-              <a
-                href={GLOBAL_CONFIG.instantBookingLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-gray-950 font-black text-xs flex items-center gap-2 shadow-lg transition"
-              >
-                <span>⚡ Instant Booking</span>
-              </a>
-            </div>
-
+          {/* Trust Badge */}
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-400/15 border border-[#D4A017]/50 text-amber-300 text-xs font-extrabold uppercase tracking-widest backdrop-blur-sm shadow-md">
+            <ShieldCheck className="w-4 h-4 text-[#D4A017]" />
+            <span>Official Pilgrim Room Booking Assistance Portal</span>
           </div>
 
-          {/* Right Column: Quick Booking Form */}
-          <div className="lg:col-span-6">
-            <div className="bg-white text-gray-900 rounded-3xl p-6 sm:p-8 shadow-2xl border-2 border-amber-300/80 relative overflow-hidden">
-              <div className="absolute top-0 left-0 right-0 h-2 maroon-gradient-bg"></div>
+          {/* Main Title & Subtitle */}
+          <div className="max-w-4xl mx-auto space-y-3">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
+              Shri Kshetra Dharmasthala Bhakta Nivas Booking
+            </h1>
+            <p className="text-sm sm:text-base text-amber-100/90 max-w-3xl mx-auto leading-relaxed font-medium">
+              Reserve your Yatri Nivas stay instantly through WhatsApp or submit an advance reservation request for upcoming travel.
+            </p>
+          </div>
 
-              <div className="flex items-center justify-between mb-5 pb-3 border-b border-gray-100">
-                <div>
-                  <h2 className="text-xl sm:text-2xl font-black text-temple-maroon tracking-tight flex items-center gap-2">
-                    <span>🏨</span>
-                    <span>Quick Room Booking Form</span>
-                  </h2>
-                  <p className="text-xs text-gray-500 mt-0.5">
-                    Check availability & reserve rooms instantly
-                  </p>
-                </div>
-                <span className="px-2.5 py-1 rounded-full bg-amber-100 text-temple-maroon text-[11px] font-bold uppercase">
-                  Fast Response
-                </span>
+          {/* TWO PREMIUM BOOKING CARDS */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8 max-w-5xl mx-auto pt-4 text-left">
+            
+            {/* ------------------------------------------
+                CARD 1 (PRIMARY) - INSTANT WHATSAPP BOOKING
+            ------------------------------------------ */}
+            <div className="group rounded-[22px] bg-gradient-to-br from-[#0E9F6E] via-emerald-700 to-emerald-900 border-2 border-emerald-400/80 p-6 sm:p-8 shadow-2xl hover:shadow-emerald-900/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+              
+              {/* Badge: FASTEST RESPONSE */}
+              <div className="absolute top-0 right-0 bg-amber-400 text-gray-950 font-black text-[11px] uppercase px-4 py-1.5 rounded-bl-2xl shadow-md tracking-wider flex items-center gap-1">
+                <Zap className="w-3.5 h-3.5 fill-gray-950" />
+                <span>⚡ FASTEST RESPONSE</span>
               </div>
 
-              <form onSubmit={handleSubmit} className="space-y-4">
-                  
-                  {/* Name & Mobile */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="hero-fullName" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <User className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>👤 Full Name *</span>
-                      </label>
-                      <input
-                        id="hero-fullName"
-                        type="text"
-                        required
-                        aria-label="Full Name"
-                        placeholder="e.g. Ramesh Kumar"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                      />
-                    </div>
+              <div className="space-y-5 pt-2">
+                <div>
+                  <span className="text-xs font-extrabold text-amber-300 uppercase tracking-widest block">Option 1</span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5">
+                    Same Day Instant Booking
+                  </h2>
+                </div>
 
-                    <div>
-                      <label htmlFor="hero-mobileNumber" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Phone className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>📱 Mobile Number *</span>
-                      </label>
-                      <input
-                        id="hero-mobileNumber"
-                        type="tel"
-                        required
-                        aria-label="Mobile Number"
-                        placeholder="10-digit mobile no."
-                        value={formData.mobileNumber}
-                        onChange={(e) => setFormData({ ...formData, mobileNumber: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                      />
-                    </div>
+                {/* Features List */}
+                <div className="space-y-3 text-xs sm:text-sm text-emerald-50/95 font-medium">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-amber-300 shrink-0" />
+                    <span>Instant room availability verification</span>
                   </div>
-
-                  {/* Email (Optional) */}
-                  <div>
-                    <label htmlFor="hero-email" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                      <Mail className="w-3.5 h-3.5 text-temple-maroon" />
-                      <span>📧 Email ID (Optional)</span>
-                    </label>
-                    <input
-                      id="hero-email"
-                      type="email"
-                      aria-label="Email ID"
-                      placeholder="e.g. ramesh@gmail.com"
-                      value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                    />
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-amber-300 shrink-0" />
+                    <span>Direct WhatsApp assistance</span>
                   </div>
-
-                  {/* Check-In & Check-Out Dates */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="hero-checkInDate" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>📅 Check-in Date</span>
-                      </label>
-                      <input
-                        id="hero-checkInDate"
-                        type="date"
-                        required
-                        aria-label="Check-in Date"
-                        min={today}
-                        value={formData.checkInDate}
-                        onChange={(e) => setFormData({ ...formData, checkInDate: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      />
-                    </div>
-
-                    <div>
-                      <label htmlFor="hero-checkOutDate" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Calendar className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>📅 Check-out Date</span>
-                      </label>
-                      <input
-                        id="hero-checkOutDate"
-                        type="date"
-                        required
-                        aria-label="Check-out Date"
-                        min={formData.checkInDate || today}
-                        value={formData.checkOutDate}
-                        onChange={(e) => setFormData({ ...formData, checkOutDate: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      />
-                    </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-amber-300 shrink-0" />
+                    <span>AC & Non-AC room guidance</span>
                   </div>
-
-                  {/* Guests Dropdown & AC/Non-AC */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="hero-guestsCount" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Users className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>👥 Number of Guests</span>
-                      </label>
-                      <select
-                        id="hero-guestsCount"
-                        aria-label="Number of Guests"
-                        value={formData.guestsCount}
-                        onChange={(e) => setFormData({ ...formData, guestsCount: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      >
-                        <option value="1 Guest">1 Guest</option>
-                        <option value="2 Guests">2 Guests</option>
-                        <option value="3 Guests">3 Guests</option>
-                        <option value="4 Guests">4 Guests</option>
-                        <option value="5 Guests">5 Guests</option>
-                        <option value="6 Guests">6 Guests</option>
-                        <option value="7 Guests">7 Guests</option>
-                        <option value="8 Guests">8 Guests</option>
-                        <option value="9 Guests">9 Guests</option>
-                        <option value="10+ Guests">10+ Guests</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="hero-acPreference" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Wind className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>❄️ AC / 🌿 Non-AC Preference</span>
-                      </label>
-                      <select
-                        id="hero-acPreference"
-                        aria-label="AC / Non-AC Preference"
-                        value={formData.acPreference}
-                        onChange={(e) => setFormData({ ...formData, acPreference: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      >
-                        <option value="AC Room">AC Room</option>
-                        <option value="Non-AC Room">Non-AC Room</option>
-                        <option value="Any Available">Any Available</option>
-                      </select>
-                    </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-amber-300 shrink-0" />
+                    <span>24×7 Pilgrim Support</span>
                   </div>
+                </div>
+              </div>
 
-                  {/* Room Type & Number of Rooms */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label htmlFor="hero-roomType" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <Bed className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>🛏 Room Type</span>
-                      </label>
-                      <select
-                        id="hero-roomType"
-                        aria-label="Room Type"
-                        value={formData.roomType}
-                        onChange={(e) => setFormData({ ...formData, roomType: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      >
-                        <option value="Double Bed Room">Double Bed Room</option>
-                        <option value="Triple Bed Room">Triple Bed Room</option>
-                        <option value="4 Bed Room">4 Bed Room</option>
-                        <option value="5 Bed Room">5 Bed Room</option>
-                        <option value="Family Bedroom (6+ Guests)">Family Bedroom (6+ Guests)</option>
-                        <option value="Any Available Room">Any Available Room</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label htmlFor="hero-roomsCount" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                        <HomeIcon className="w-3.5 h-3.5 text-temple-maroon" />
-                        <span>🏨 Number of Rooms</span>
-                      </label>
-                      <select
-                        id="hero-roomsCount"
-                        aria-label="Number of Rooms"
-                        value={formData.roomsCount}
-                        onChange={(e) => setFormData({ ...formData, roomsCount: e.target.value })}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition bg-white"
-                      >
-                        <option value="1 Room">1 Room</option>
-                        <option value="2 Rooms">2 Rooms</option>
-                        <option value="3 Rooms">3 Rooms</option>
-                        <option value="4 Rooms">4 Rooms</option>
-                        <option value="5 Rooms">5 Rooms</option>
-                        <option value="5+ Rooms">5+ Rooms</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  {/* Special Request */}
-                  <div>
-                    <label htmlFor="hero-specialRequest" className="block text-xs font-bold text-gray-700 mb-1 flex items-center gap-1">
-                      <MessageSquare className="w-3.5 h-3.5 text-temple-maroon" />
-                      <span>📝 Special Request (Optional)</span>
-                    </label>
-                    <input
-                      id="hero-specialRequest"
-                      type="text"
-                      aria-label="Special Request"
-                      placeholder="e.g. Ground floor preferred for elders, late night check-in"
-                      value={formData.specialRequest}
-                      onChange={(e) => setFormData({ ...formData, specialRequest: e.target.value })}
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-gray-300 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none transition"
-                    />
-                  </div>
-
-                  {/* Main Instant Booking WhatsApp Submit Button */}
-                  <button
-                    type="submit"
-                    className="w-full py-4 px-6 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:bg-emerald-800 text-white font-black text-base shadow-lg hover:shadow-xl hover:shadow-emerald-600/30 transition duration-200 flex items-center justify-center gap-2.5 transform hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    <MessageSquare className="w-5 h-5 text-amber-300 fill-amber-300 shrink-0" />
-                    <span>⚡ Instant Booking</span>
-                  </button>
-
-                  {/* Below the form: Direct Quick Links */}
-                  <div className="pt-3 border-t border-gray-100 space-y-2">
-                    <p className="text-xs text-gray-500 text-center font-medium">Or choose a direct option below:</p>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                      <button
-                        type="button"
-                        onClick={handleSubmit}
-                        className="py-3 px-3 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex flex-col items-center justify-center text-center shadow-md transition"
-                      >
-                        <span className="text-amber-300 font-extrabold text-xs">⚡ Instant Booking</span>
-                        <span className="text-[10px] text-emerald-100/90 font-medium">(Same Day / WhatsApp)</span>
-                      </button>
-                      <a
-                        href="https://docs.google.com/forms/d/e/1FAIpQLSc_W7Aky0QOl9LCL08sFdKBV3XJKf-hQ6YXwWjkJw7I-3BIRA/viewform"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="py-3 px-3 rounded-xl maroon-gradient-bg text-amber-200 hover:text-white font-bold text-xs flex items-center justify-center text-center border border-amber-400/50 shadow-md transition"
-                      >
-                        <span>📅 One Day Advance Booking</span>
-                      </a>
-                    </div>
-                  </div>
-
-                </form>
+              {/* Instant WhatsApp Action - NO FORMS, NO POPUPS, DIRECT LINK */}
+              <div className="pt-8 space-y-2">
+                <a
+                  href={instantWhatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full min-h-[56px] py-4 px-6 rounded-2xl bg-white hover:bg-amber-50 active:scale-95 text-[#0E9F6E] font-black text-base sm:text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-200 transform hover:scale-[1.02] cursor-pointer no-underline"
+                >
+                  <span className="text-xl">📱</span>
+                  <span>Instant WhatsApp Booking</span>
+                </a>
+                <p className="text-[11px] text-amber-200/90 text-center font-semibold pt-1">
+                  ⚡ Instant response during support hours.
+                </p>
+              </div>
 
             </div>
+
+            {/* ------------------------------------------
+                CARD 2 (SECONDARY) - ADVANCE RESERVATION
+            ------------------------------------------ */}
+            <div className="group rounded-[22px] bg-gradient-to-br from-[#7A0C16] via-[#5C0911] to-[#40060B] border-2 border-[#D4A017]/80 p-6 sm:p-8 shadow-2xl hover:shadow-amber-950/50 transition-all duration-300 flex flex-col justify-between relative overflow-hidden">
+              
+              {/* Badge: PRE-PLAN */}
+              <div className="absolute top-0 right-0 bg-[#D4A017] text-gray-950 font-black text-[11px] uppercase px-4 py-1.5 rounded-bl-2xl shadow-md tracking-wider flex items-center gap-1">
+                <Calendar className="w-3.5 h-3.5 text-gray-950" />
+                <span>PRE-PLAN TRAVEL</span>
+              </div>
+
+              <div className="space-y-5 pt-2">
+                <div>
+                  <span className="text-xs font-extrabold text-amber-300 uppercase tracking-widest block">Option 2</span>
+                  <h2 className="text-2xl sm:text-3xl font-black text-white tracking-tight mt-0.5">
+                    Advance Reservation
+                  </h2>
+                </div>
+
+                {/* Features List */}
+                <div className="space-y-3 text-xs sm:text-sm text-amber-100/95 font-medium">
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#D4A017] shrink-0" />
+                    <span>Submit preferred travel dates</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#D4A017] shrink-0" />
+                    <span>Room preference selection</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#D4A017] shrink-0" />
+                    <span>Family & Group bookings</span>
+                  </div>
+                  <div className="flex items-center gap-2.5">
+                    <CheckCircle2 className="w-4 h-4 text-[#D4A017] shrink-0" />
+                    <span>Secure reservation request</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Advance Reservation CTA */}
+              <div className="pt-8">
+                <a
+                  href={advanceFormUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full min-h-[56px] py-4 px-6 rounded-2xl bg-amber-400 hover:bg-amber-300 active:scale-95 text-gray-950 font-black text-base sm:text-lg flex items-center justify-center gap-3 shadow-xl transition-all duration-200 transform hover:scale-[1.02] cursor-pointer no-underline border border-amber-200"
+                >
+                  <span className="text-xl">📅</span>
+                  <span>Advance Reservation Form</span>
+                  <ExternalLink className="w-4 h-4 text-gray-950 shrink-0" />
+                </a>
+              </div>
+
+            </div>
+
           </div>
 
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* ==========================================
+          WHY BOOK THROUGH OUR ASSISTANCE PORTAL
+      ========================================== */}
+      <section className="py-14 sm:py-16 bg-[#FDFBF7] border-b border-amber-200/60">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-2">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-[#7A0C16] text-xs font-bold uppercase tracking-wider border border-amber-200">
+              <Sparkles className="w-3.5 h-3.5 text-[#D4A017]" />
+              <span>Pilgrim Stay Benefits</span>
+            </span>
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-gray-900 tracking-tight">
+              Why Book Through Our Assistance Portal?
+            </h2>
+            <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">
+              We ensure seamless, hygienic, and convenient Yatri accommodation for devotees visiting Shri Kshetra Dharmasthala.
+            </p>
+          </div>
+
+          {/* 6 Premium Feature Cards: 2-column mobile, 3-column desktop layout */}
+          <div className="grid grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {trustFeatures.map((feat, idx) => (
+              <div
+                key={idx}
+                className="rounded-[22px] bg-white p-5 sm:p-6 border border-amber-200/80 shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 flex flex-col justify-between space-y-3 text-left group"
+              >
+                <div className="space-y-3">
+                  <div className="w-12 h-12 rounded-2xl bg-amber-50 border border-[#D4A017]/40 text-2xl flex items-center justify-center shadow-xs group-hover:scale-110 transition-transform duration-300">
+                    {feat.icon}
+                  </div>
+                  <h3 className="text-sm sm:text-base font-black text-gray-900 leading-snug">
+                    {feat.title}
+                  </h3>
+                  <p className="text-xs text-gray-600 leading-relaxed">
+                    {feat.description}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+    </div>
   );
 };

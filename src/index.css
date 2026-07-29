@@ -4,12 +4,13 @@
   :root {
     --bg-cream: #FDFBF7;
     --card-bg: #FFFFFF;
-    --maroon-deep: #800000;
+    --maroon-deep: #7A0C16;
     --maroon-light: #A00000;
-    --maroon-dark: #4D0000;
-    --gold-primary: #D4AF37;
-    --gold-dark: #B89628;
+    --maroon-dark: #40060B;
+    --gold-primary: #D4A017;
+    --gold-dark: #B8860B;
     --gold-light: #FDF3D6;
+    --emerald-primary: #0E9F6E;
     --text-dark: #1A1A1A;
     --text-muted: #555555;
   }
@@ -17,7 +18,7 @@
   body {
     background-color: var(--bg-cream);
     color: var(--text-dark);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow-x: hidden;
     scroll-behavior: smooth;
   }
